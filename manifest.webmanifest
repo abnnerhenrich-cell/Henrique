@@ -1,0 +1,9 @@
+{
+  "name": "Apps Henrique",
+  "short_name": "Henrique",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#070a12",
+  "theme_color": "#8a2be2",
+  "icons": []
+}

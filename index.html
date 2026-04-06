@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Apps Henrique</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg0:#070a12;--bg1:#0b1220;--blue:#8a2be2;--blue2:#c061ff;--text:#fff;--muted:rgba(255,255,255,.72)}
+*{box-sizing:border-box} body{margin:0;font-family:Poppins,sans-serif;color:var(--text);background:linear-gradient(135deg,var(--bg0),var(--bg1))}
+.wrap{max-width:1100px;margin:auto;padding:30px 16px 50px;text-align:center}
+h1{font-weight:900;font-size:clamp(26px,5vw,44px);text-transform:uppercase;background:linear-gradient(90deg,var(--blue),#fff,var(--blue2));-webkit-background-clip:text;color:transparent;margin-bottom:10px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:25px}.warn{max-width:780px;margin:0 auto 24px;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.88);font-size:14px}
+.tools{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}.search{width:min(650px,100%);padding:14px 16px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(138,43,226,.35)}
+.search input{width:100%;border:0;background:transparent;color:white;font-weight:600;outline:none;text-align:center;font-size:15px}#lobby{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));justify-content:center}
+.app-card{border-radius:24px;padding:22px;background:rgba(255,255,255,.06);border:1px solid rgba(138,43,226,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:.25s;min-height:230px;text-decoration:none;color:white}
+.app-card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(138,43,226,.25)}.app-card img{width:115px;height:115px;border-radius:22px;object-fit:cover;background:#111}.app-card span{font-weight:900;font-size:15px;text-transform:uppercase}.foot{margin-top:30px;font-size:13px;color:rgba(255,255,255,.5)}
+.contact{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;text-decoration:none;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-weight:900;font-size:15px;margin-top:26px}
+.contact img{width:22px;height:22px}
+@media (max-width:768px){.wrap{padding:20px 14px 40px}h1{font-size:26px}.sub{font-size:14px}.tools{flex-direction:column;align-items:center}.search{width:100%}#lobby{grid-template-columns:repeat(2,1fr);gap:16px}.app-card{min-height:190px;padding:18px}.app-card img{width:95px;height:95px}.app-card span{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Apps Henrique</h1>
+<p class="sub">Escolha uma opção abaixo para abrir no navegador.</p>
+<div class="warn">Esta versão removeu recursos que costumam gerar alertas de segurança em navegadores, como instalação forçada de app, service worker e popup de instalação.</div>
+<div class="tools">
+<div class="search"><input id="q" type="search" placeholder="Buscar app..."></div>
+<div id="count">0 apps</div>
+</div>
+<section id="lobby"></section>
+<a class="contact" href="https://wa.me/5514988094123" target="_blank" rel="noopener noreferrer nofollow"><img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">Falar no WhatsApp</a>
+<div class="foot">© <span id="year"></span> • Henrique</div>
+</div>
+<script>
+const apps = [
+{ nome:"ÁGUIA", img:"https://ugc.production.linktr.ee/aec4543c-8b8c-419f-bcd6-3d6ccd68fcf2_image.png", url:"https://app.aguiaoficial.com/pr/504Ecgp2" },
+{ nome:"JB PIX", img:"https://ugc.production.linktr.ee/21c8eac6-37f8-4d6e-b584-75554d3a60ef_image.png", url:"https://app.jbpixs.com/pr/xl21wdtC" },
+{ nome:"PALPITEIRO", img:"https://i.imgur.com/KoGMPef.jpeg", url:"https://palpiteiro-nu.vercel.app/" },
+{ nome:"PUXADAS DA KELLY", img:"https://i.imgur.com/5Qxu8tP.png", url:"https://puxadas-navy.vercel.app/" },
+{ nome:"GRUPO DE PALPITES", img:"https://i.ibb.co/CsYMH4Vb/Whats-App-Image-2025-10-13-at-09-42-37.jpg", url:"https://chat.whatsapp.com/JDguOWOKftTCTIXDIdpcUx" }
+];
+const lobby=document.getElementById("lobby"); const q=document.getElementById("q"); const count=document.getElementById("count");
+function render(list){lobby.innerHTML=""; list.forEach(app=>{const a=document.createElement("a"); a.className="app-card"; a.href=app.url; a.target="_blank"; a.rel="noopener noreferrer nofollow"; a.innerHTML=`<img src="${app.img}" alt="${app.nome}"><span>${app.nome}</span>`; lobby.appendChild(a);}); count.textContent=list.length+" apps";}
+render(apps); q.addEventListener("input",()=>{const term=q.value.toLowerCase(); render(apps.filter(a=>a.nome.toLowerCase().includes(term)));}); document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
