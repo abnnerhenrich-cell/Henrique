@@ -1,7 +1,1 @@
-self.addEventListener("install", () => {
-  self.skipWaiting();
-});
-
-self.addEventListener("activate", () => {
-  self.clients.claim();
-});
+// service worker removido para evitar alertas indevidos de instalação
