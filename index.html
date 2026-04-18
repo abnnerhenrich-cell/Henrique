@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🎰 APPS HENRIQUE 🎰</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+
+
+<style>
+:root{
+--bg0:#090511;
+--bg1:#140a24;
+--purple:#b05cff;
+--purple2:#7a2cff;
+--purple3:#e26fff;
+--accent:#c993ff;
+--green:#39FF14;
+--text:#fff;
+--muted:rgba(255,255,255,.72);
+--line:rgba(176,92,255,.28);
+--panel:rgba(255,255,255,.06);
+}
+
+*{box-sizing:border-box}
+
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(9,5,17,.78), rgba(9,5,17,.92)),
+url("icons/icon-512.png") center 70px/420px no-repeat;
+opacity:.34;
+filter:blur(1px) saturate(1.15);
+pointer-events:none;
+z-index:-2;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:18px;
+border:1px solid rgba(201,147,255,.18);
+border-radius:28px;
+box-shadow:0 0 0 1px rgba(122,44,255,.15) inset, 0 0 70px rgba(122,44,255,.12) inset;
+pointer-events:none;
+z-index:-1;
+}
+
+body{
+margin:0;
+font-family:"Poppins",sans-serif;
+color:var(--text);
+background:
+radial-gradient(circle at top center, rgba(176,92,255,.23), transparent 26%),
+radial-gradient(circle at 20% 20%, rgba(122,44,255,.18), transparent 24%),
+radial-gradient(circle at 80% 18%, rgba(226,111,255,.16), transparent 22%),
+linear-gradient(135deg,var(--bg0),var(--bg1));
+min-height:100vh;
+position:relative;
+overflow-x:hidden;
+}
+
+.wrap{
+max-width:1100px;
+margin:auto;
+padding:30px 16px 140px;
+text-align:center;
+}
+
+h1{
+font-weight:900;
+font-size:clamp(24px,5vw,44px);
+text-transform:uppercase;
+background:linear-gradient(90deg,var(--purple3),var(--accent),var(--purple2));
+text-shadow:0 0 22px rgba(176,92,255,.28);
+-webkit-background-clip:text;
+color:transparent;
+margin-bottom:10px;
+}
+
+.sub{
+color:var(--muted);
+font-size:15px;
+margin-bottom:25px;
+}
+
+.tools{
+display:flex;
+gap:12px;
+justify-content:center;
+flex-wrap:wrap;
+margin-bottom:25px;
+}
+
+.search{
+width:min(650px,100%);
+padding:14px 16px;
+border-radius:999px;
+background:rgba(255,255,255,.055);
+border:1px solid var(--line);
+box-shadow:0 12px 32px rgba(122,44,255,.12), inset 0 0 0 1px rgba(255,255,255,.03);
+backdrop-filter:blur(8px);
+}
+
+.search input{
+width:100%;
+border:0;
+background:transparent;
+color:white;
+font-weight:600;
+outline:none;
+text-align:center;
+font-size:15px;
+}
+
+#lobby{
+display:grid;
+gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+justify-content:center;
+}
+
+/* 🔥 APPS MAIORES */
+.app-card{
+border-radius:24px;
+padding:22px;
+cursor:pointer;
+background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
+border:1px solid var(--line);
+box-shadow:0 16px 40px rgba(122,44,255,.12);
+backdrop-filter:blur(10px);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:16px;
+transition:.25s;
+min-height:230px;
+}
+
+.app-card:hover{
+transform:translateY(-10px);
+box-shadow:0 22px 52px rgba(122,44,255,.28);
+}
+
+.app-card img{
+width:115px;
+height:115px;
+border-radius:22px;
+object-fit:cover;
+border:1px solid rgba(201,147,255,.35);
+box-shadow:0 10px 24px rgba(122,44,255,.25);
+}
+
+.app-card span{
+font-weight:900;
+font-size:15px;
+text-transform:uppercase;
+}
+
+.app-card small{
+font-size:12px;
+color:rgba(255,255,255,.72);
+font-weight:600;
+}
+
+.card-link{
+text-decoration:none;
+color:inherit;
+display:block;
+}
+
+.foot{
+margin-top:30px;
+font-size:13px;
+color:rgba(255,255,255,.5);
+}
+
+/* BOTÃO WHATSAPP */
+#promotor-link{
+position:fixed;
+left:0;
+right:0;
+margin:auto;
+bottom:20px;
+width:max-content;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:16px 28px;
+border-radius:999px;
+text-decoration:none;
+background:linear-gradient(135deg,var(--purple3),var(--purple2));
+color:white;
+font-weight:900;
+font-size:15px;
+box-shadow:0 18px 55px rgba(122,44,255,.38);
+border:1px solid rgba(201,147,255,.28);
+z-index:999;
+transition:.2s;
+}
+
+#promotor-link:hover{
+transform:translateY(-6px);
+box-shadow:0 26px 68px rgba(122,44,255,.48);
+}
+
+#promotor-link img{
+width:24px;
+height:24px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:768px){
+
+body::before{
+background:
+linear-gradient(rgba(9,5,17,.84), rgba(9,5,17,.95)),
+url("icons/icon-512.png") center 92px/320px no-repeat;
+opacity:.22;
+}
+
+body::after{
+inset:10px;
+border-radius:22px;
+}
+
+.wrap{
+padding:18px 12px calc(110px + env(safe-area-inset-bottom));
+}
+
+h1{
+font-size:22px;
+line-height:1.15;
+margin-bottom:8px;
+}
+
+.sub{
+font-size:13px;
+line-height:1.55;
+margin-bottom:18px;
+}
+
+.tools{
+flex-direction:column;
+align-items:center;
+gap:10px;
+margin-bottom:18px;
+}
+
+.search{
+width:100%;
+padding:12px 14px;
+border-radius:20px;
+}
+
+.search input{
+font-size:16px;
+}
+
+#count{
+padding:10px 16px !important;
+font-size:13px;
+}
+
+#lobby{
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
+}
+
+.app-card{
+min-height:168px;
+padding:14px 10px;
+gap:12px;
+border-radius:20px;
+}
+
+.app-card img{
+width:82px;
+height:82px;
+border-radius:18px;
+}
+
+.app-card span{
+font-size:12px;
+line-height:1.25;
+word-break:break-word;
+}
+
+.app-card small{
+font-size:10px;
+}
+
+.foot{
+margin-top:20px;
+margin-bottom:10px;
+font-size:12px;
+}
+
+#promotor-link{
+left:12px;
+right:12px;
+width:auto;
+max-width:none;
+bottom:calc(12px + env(safe-area-inset-bottom));
+padding:14px 18px;
+font-size:14px;
+gap:10px;
+border-radius:22px;
+}
+
+#promotor-link img{
+width:22px;
+height:22px;
+}
+
+}
+
+@media (max-width:420px){
+#lobby{
+grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.app-card{
+min-height:154px;
+}
+
+.app-card img{
+width:74px;
+height:74px;
+}
+
+.app-card span{
+font-size:11px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<h1>🎰 APPS HENRIQUE 🎰</h1>
+<p class="sub">🎲 Escolha uma opção abaixo para abrir no navegador. Todos os links externos são identificados claramente. Se precisar de ajuda, chame no WhatsApp.</p>
+
+<div class="tools">
+<div class="search">
+<input id="q" type="search" placeholder="Buscar app...">
+</div>
+<div id="count" style="padding:12px 18px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);box-shadow:0 10px 24px rgba(122,44,255,.12);font-weight:700;">0 apps</div>
+</div>
+
+<section id="lobby"></section>
+
+<div class="foot">© <span id="year"></span> • Henrique • Links externos abrem em nova aba</div>
+
+</div>
+
+<a id="promotor-link"
+href="https://wa.me/5514988094123"
+target="_blank"
+rel="noopener noreferrer">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+Chame seu Promotor
+</a>
+
+<script>
+const apps = [
+{ nome:"ÁGUIA", img:"https://ugc.production.linktr.ee/aec4543c-8b8c-419f-bcd6-3d6ccd68fcf2_image.png", url:"https://app.aguiaoficial.com/pr/504Ecgp2" },
+{ nome:"JB PIX", img:"https://ugc.production.linktr.ee/21c8eac6-37f8-4d6e-b584-75554d3a60ef_image.png", url:"https://app.jbpixs.com/pr/xl21wdtC" },
+{ nome:"PALPITEIRO", img:"https://i.imgur.com/KoGMPef.jpeg", url:"https://palpiteiro-nu.vercel.app/" },
+{ nome:"GRUPO DE PALPITES", img:"https://i.ibb.co/CsYMH4Vb/Whats-App-Image-2025-10-13-at-09-42-37.jpg", url:"https://chat.whatsapp.com/JDguOWOKftTCTIXDIdpcUx" }
+];
+
+const lobby=document.getElementById("lobby");
+const q=document.getElementById("q");
+const count=document.getElementById("count");
+
+function render(list){
+lobby.innerHTML="";
+list.forEach(app=>{
+const link=document.createElement("a");
+link.className="card-link";
+link.href=app.url;
+link.target="_blank";
+link.rel="noopener noreferrer nofollow";
+link.setAttribute("aria-label",`Abrir ${app.nome} em nova aba`);
+
+const card=document.createElement("article");
+card.className="app-card";
+card.innerHTML=`<img src="${app.img}" alt="${app.nome}"><span>${app.nome}</span><small>Link externo</small>`;
+
+link.appendChild(card);
+lobby.appendChild(link);
+});
+count.textContent=list.length+" apps";
+}
+
+render(apps);
+
+q.addEventListener("input",()=>{
+const term=q.value.toLowerCase();
+render(apps.filter(a=>a.nome.toLowerCase().includes(term)));
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+
+
+
+
+</body>
+</html>
